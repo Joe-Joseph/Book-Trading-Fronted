@@ -1,0 +1,29 @@
+.user-table{
+    border: none !important;
+}
+
+.user-cards{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.user-card{
+    margin: 25px !important;
+}
+
+.users-pagination{
+    margin-top: 40px !important;
+    margin-left: 40px !important;
+}
+
+.create-request-container{
+    margin: 10%;
+}
+
+.form-container{
+    padding: 50px;
+}
+
+.submit-btn{
+    padding: 10px 80px !important;
+}

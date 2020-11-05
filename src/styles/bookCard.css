@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap');
+
+.book-card {
+    border: 1px solid #bfbbbb !important;
+    width: 16% !important;
+    border-radius: 5px !important;
+    margin-top: 30px !important;
+    margin-left: 30px !important;
+}
+
+.book-image-container {
+    padding: 10px;
+}
+
+.book-image {
+    padding: 10px !important;
+}
+
+.book-content {
+    position: absolute;
+    width: 100%;
+    top: 4.5rem;
+    text-align: center;
+    color: white;
+    opacity: 0;
+    transition: all .5s;
+    font-family: 'EB Garamond', serif;
+}
+
+.book-content h3, p{
+    font-family: 'EB Garamond', serif;
+    margin: 5px;
+    font-weight: 600;
+}
+
+.book-card:hover .book-content{
+    opacity: 1;
+    transform: translate(0%, 35%);
+    cursor: pointer;
+}
+
+.book-card:hover .book-image{
+    filter: blur(1px) brightness(15%) !important;
+}
+
+.request-book-card {
+    width: 35% !important;
+    margin-top: 30px !important;
+    margin-left: 30px !important;
+}
+
+.request-book-card:hover .book-content{
+    opacity: 1;
+    transform: translate(0%, 30%);
+    cursor: pointer;
+}
+
+.request-title {
+    margin-top: 4rem !important;
+    margin-left: 3rem;
+}
+
+.request-book-card:hover .book-image{
+    filter: blur(1px) brightness(15%) !important;
+}
