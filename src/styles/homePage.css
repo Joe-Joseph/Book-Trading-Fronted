@@ -1,0 +1,35 @@
+.app-container {
+    padding: 0 !important;
+}
+
+.sidebar {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+    margin-top: 2rem !important;
+}
+
+.height {
+    height: 96vh !important;
+}
+
+.content {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+    margin-left: 3rem !important;
+    margin-top: 2rem !important;
+}
+
+.signup-menu-item {
+    margin-top: 30rem !important;
+}
+
+.books-container {
+    display: flex;
+    justify-content: left;
+    flex-wrap: wrap;
+    margin: 10px 10px 40px 10px;
+}
+
+.pagination {
+    margin-left: 40px;
+}
