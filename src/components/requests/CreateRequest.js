@@ -1,8 +1,8 @@
 import React from 'react';
 import { Button } from 'semantic-ui-react'
 
-import MultipleSelect from './MultipleSelect'
-import '../styles/createRequest.css'
+import MultipleSelect from '../MultipleSelect'
+import '../../styles/createRequest.css'
 
 const CreateRequest = () => {
     return (

@@ -1,29 +1,56 @@
 import React, { Component } from 'react'
 import { Grid, Segment, Pagination } from 'semantic-ui-react'
+import { connect } from 'react-redux';
 
-import Books from './components/Books'
-import Request from './components/Requests'
+import Books from './components/books/Books'
+import Requests from './components/requests/Request'
 import Sidebar from './components/Sidebar'
-import CreateRequest from './components/CreateRequest'
-import Users from './components/Users'
-import Signup from './components/Signup'
-import Login from './components/Login'
+import CreateRequest from './components/requests/CreateRequest'
+import Users from './components/users/Users'
+import Signup from './components/users/Signup'
+import Login from './components/users/Login'
+import { createUser } from './actions/users/createUser'
+
 import './styles/homePage.css'
 
-import book1 from './images/book1.png'
-import book2 from './images/book2.png'
-import book3 from './images/book3.png'
-import book4 from './images/book4.png'
-import book5 from './images/book5.png'
-
-export default class App extends Component {
-  state = { activeItem: 'Books Trading' }
+class App extends Component {
+  state = {
+    activeItem: 'Books Trading',
+    attributes: {}
+  }
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
-  render() {
-    const { activeItem } = this.state
+  handleChange = (e) => {
+    const { name, value } = e.target
+    const { attributes } = this.state
+    this.setState({
+      attributes: {
+        ...attributes,
+        [name]: value
+      },
+    })
+  }
 
+  submitUser = async() => {
+    const { createUser } = this.props
+    const { attributes } = this.state
+    await createUser(attributes)
+
+    this.handleRedirect()
+  }
+
+  handleRedirect = async() => {
+    const { userCreated } = this.props
+    userCreated && userCreated.data &&
+    this.setState({
+      activeItem: 'Books Trading'
+    })
+  }
+
+  render () {
+    const { activeItem, attributes } = this.state
+    const { userFailed } = this.props
     return (
       <Grid className="app-container">
         <Grid.Column width={3} className='sidebar height'>
@@ -33,8 +60,8 @@ export default class App extends Component {
           />
         </Grid.Column>
 
-        <Grid.Column stretched width={12} className='content'>
-          <Segment>
+        <Grid.Column stretched width={12} className='page-content'>
+          <Segment className='app-content-container'>
             { (activeItem === 'Books Trading')?
               <>
                 <Books cardClass='book-card'/>
@@ -51,7 +78,7 @@ export default class App extends Component {
                 
               </>
               : (activeItem === 'All Request')?
-              <Request cardClass='request-book-card'/>
+              <Requests cardClass='request-book-card'/>
 
               : (activeItem === 'Create request')?
               <CreateRequest/>
@@ -60,7 +87,12 @@ export default class App extends Component {
               <Users/>
 
               : (activeItem === 'Signup')?
-              <Signup/>
+              <Signup
+                handleChange={this.handleChange}
+                attributes={attributes}
+                submitUser={this.submitUser}
+                error={userFailed}
+              />
 
               : (activeItem === 'Login')?
               <Login/>: null
@@ -71,3 +103,10 @@ export default class App extends Component {
     )
   }
 }
+
+const mapStateToProps = state => ({
+  userCreated: state.users.newUser,
+  userFailed: state.users.error
+})
+
+export default connect(mapStateToProps, { createUser })(App)

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import UserCard from '../components/UserCard'
+import UserCard from './UserCard'
 
 import { Pagination } from 'semantic-ui-react'
 

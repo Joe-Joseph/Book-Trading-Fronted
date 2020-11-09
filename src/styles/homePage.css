@@ -12,7 +12,7 @@
     height: 96vh !important;
 }
 
-.content {
+.page-content {
     margin-bottom: 0 !important;
     padding-bottom: 0 !important;
     margin-left: 3rem !important;
@@ -32,4 +32,17 @@
 
 .pagination {
     margin-left: 40px;
+}
+
+.app-content-container{
+    height: 95vh;
+    overflow-y: scroll;
+}
+
+.app-content-container::-webkit-scrollbar-track {
+    background: #fff;
+  }
+
+.app-content-container::-webkit-scrollbar {
+    width: 5px;
 }

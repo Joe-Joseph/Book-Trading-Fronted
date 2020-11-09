@@ -1,7 +1,7 @@
 import React from 'react';
 import { Input, Button } from 'semantic-ui-react'
 
-import '../styles/user.css'
+import '../../styles/user.css'
 
 const Login = () => {
     return (
