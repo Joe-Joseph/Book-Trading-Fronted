@@ -1,17 +1,32 @@
+import React from 'react';
 import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
-import { colourOptions } from './data';
 
 const animatedComponents = makeAnimated();
+const returnOptions = (books) => {
+  const options = []
+  for(let i=0; i<books.length; i++) {
+    let book = {}
+    book.value = books[i]._id
+    book.label = `${books[i].name} by ${books[i].author}`
 
-const  MultipleSelect = () => {
+    options.push(book)
+  }
+
+  return options
+}
+
+const  MultipleSelect = ({books, name, handleChange}) => {
+  const allBooks = books && returnOptions(books)
+
   return (
     <Select
       closeMenuOnSelect={false}
       components={animatedComponents}
-      defaultValue={[colourOptions[4], colourOptions[5]]}
       isMulti
-      options={colourOptions}
+      options={allBooks}
+      onChange={handleChange}
+      name={name}
     />
   );
 }

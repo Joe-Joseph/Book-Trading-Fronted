@@ -1,6 +1,21 @@
 .create-request-container {
-    margin: 25%;
+    margin: 10% !important;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 4px;
+}
+
+.one-request{
+    margin: 5px 40px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.one-request:first-child{
+    margin-top: 2rem
+}
+
+.one-request-card{
+    margin-top: 0 !important;
+    margin-left: 5rem !important;
 }
