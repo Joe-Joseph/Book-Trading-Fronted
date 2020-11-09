@@ -2,7 +2,7 @@ import React from 'react'
 import { Card, Table } from 'semantic-ui-react'
 
 
-import '../styles/user.css'
+import '../../styles/user.css'
 
 
 const UserCard = () => (
