@@ -23,6 +23,10 @@
     margin-top: 30rem !important;
 }
 
+.menu-item {
+    font-size: 12px !important;
+}
+
 .books-container {
     display: flex;
     justify-content: left;

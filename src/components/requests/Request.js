@@ -1,61 +1,35 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Grid } from 'semantic-ui-react'
+import { connect } from 'react-redux'
 
-import OneRequest from './OneRequest'
+import { getAllRequests } from '../../actions/requests/getAllRequests'
+import BooksToReceive from './BookToReceive'
+import BooksToGive from './BookToGive';
 
-const Requests = () => {
+const Requests = (props) => {
+    useEffect(() => {
+        const fetchRequests = async() => {
+            await props.getAllRequests()
+        }
+        fetchRequests()
+    }, [])
     return (
         <Grid>
-            <Grid.Row className="one-request">
-                <Grid.Column width={8}>
-                    <p className='request-title'>Books to Give</p>
-                    <div className='books-container'  >
-                        <OneRequest />
-                        <OneRequest />
-                    </div>
-
-                </Grid.Column>
-                <Grid.Column width={8}>
-                    <p className='request-title'>Books to Receive</p>
-                    <div className='books-container'>
-                        <OneRequest />
-                    </div>
-                </Grid.Column>
-            </Grid.Row>
-
-            <Grid.Row className="one-request">
-                <Grid.Column width={8}>
-                    <p className='request-title'>Books to Give</p>
-                    <div className='books-container'  >
-                        <OneRequest />
-                    </div>
-
-                </Grid.Column>
-                <Grid.Column width={8}>
-                    <p className='request-title'>Books to Receive</p>
-                    <div className='books-container'>
-                        <OneRequest />
-                    </div>
-                </Grid.Column>
-            </Grid.Row>
-
-            <Grid.Row className="one-request">
-                <Grid.Column width={8}>
-                    <p className='request-title'>Books to Give</p>
-                    <div className='books-container'  >
-                        <OneRequest />
-                    </div>
-
-                </Grid.Column>
-                <Grid.Column width={8}>
-                    <p className='request-title'>Books to Receive</p>
-                    <div className='books-container'>
-                        <OneRequest />
-                    </div>
-                </Grid.Column>
-            </Grid.Row>
+            {
+                props.requests
+                && props.requests.length > 0
+                && props.requests.map((request) => (
+                <Grid.Row className="one-request">
+                    <BooksToGive booksToGive={request.booksToGive}/>
+                    <BooksToReceive booksToReceive={request.booksToReceive}/>
+                </Grid.Row>
+            ))}
         </Grid>
     )
 }
 
-export default Requests
+const mapStateToProps = state => ({
+    requests: state.allRequests.requests
+})
+
+export default connect(mapStateToProps, { getAllRequests })(Requests)

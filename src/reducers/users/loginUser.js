@@ -2,7 +2,7 @@ import jwt from "jwt-decode";
 import { userActionTypes } from '../../actions/actionTypes/'
 
 const initialState = {
-    newUser: {},
+    user: {},
     error: null,
     isAuth: false,
 }
@@ -10,7 +10,7 @@ const initialState = {
 // eslint-disable-next-line import/no-anonymous-default-export
 export default function (state = initialState, action){
     switch(action.type) {
-        case userActionTypes.CREATE_USER:
+        case userActionTypes.LOGIN_USER:
             const { token } = action.payload
             localStorage.token = token
             const userToken = jwt(token);
@@ -19,10 +19,10 @@ export default function (state = initialState, action){
             return {
                 ...state,
                 isAuth: true,
-                newUser: action.payload,
+                user: action.payload,
                 error: null
             }
-        case userActionTypes.CREATE_USER_FAIL:
+        case userActionTypes.LOGIN_USER_FAIL:
             return {
                 ...state,
                 error: action.payload

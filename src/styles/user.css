@@ -17,11 +17,11 @@
 }
 
 .create-request-container{
-    margin: 10%;
+    margin: 20% !important;
 }
 
 .form-container{
-    padding: 50px;
+    padding: 50px !important;
 }
 
 .submit-btn{

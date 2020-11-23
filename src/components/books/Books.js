@@ -13,8 +13,15 @@ const Books = (props) => {
     }, [])
     return (
         <div className='books-container'>
-            {props.books && props.books.data && props.books.data.length > 0 && props.books.data.map((book) => (
-                <BookCard cardClass={ props.cardClass } book={book}/>
+            {
+                props.books
+                && props.books.data
+                && props.books.data.length > 0
+                && props.books.data.map((book) => (
+                <BookCard
+                    cardClass={ props.cardClass }
+                    book={book}
+                />
             ))}
         </div>
     )

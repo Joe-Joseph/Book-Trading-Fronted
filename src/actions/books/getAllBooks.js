@@ -6,7 +6,7 @@ export const getAllBooks = () => async dispatch => {
         const result = await axios.get('https://manage-book-trading-club.herokuapp.com/api/books')
         dispatch({
             type: booksActionTypes.GET_ALL_BOOKS_SUCCESS,
-            payload: result.data
+            payload: result && result.data
         })
     }catch (err) {
         dispatch({

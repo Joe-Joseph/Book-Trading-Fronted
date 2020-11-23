@@ -1,31 +1,35 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { connect } from 'react-redux'
 
 import UserCard from './UserCard'
+import { getAllUsers } from '../../actions/users/getAllUsers'
 
-import { Pagination } from 'semantic-ui-react'
+const Users = (props) => {
+    useEffect(() => {
+        const fetchUsers = async() => {
+            await props.getAllUsers()
+        }
 
-const Users = () => {
+        fetchUsers()
+    }, [])
     return (
         <>
             <div className='user-cards'>
-                <UserCard />
-                <UserCard />
-                <UserCard />
-                <UserCard />
-                <UserCard />
+                {props.users &&
+                    props.users.data &&
+                    props.users.data.length > 0 &&
+                    props.users.data.map((user) => (
+                    <UserCard user={user}/>
+                ))}
             </div>
             <div className='users-pagination'>
-                <Pagination
-                    defaultActivePage={1}
-                    firstItem={null}
-                    lastItem={null}
-                    pointing
-                    secondary
-                    totalPages={3}
-                />
             </div>
         </>
     )
 }
 
-export default Users
+const mapStateToProps = state => ({
+    users: state.allUsers.users
+})
+
+export default connect(mapStateToProps, { getAllUsers })(Users)

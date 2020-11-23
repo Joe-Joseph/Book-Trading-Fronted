@@ -8,7 +8,12 @@ import '../../styles/bookCard.css'
 
 const BookCard = ({ cardClass, book }) => (
     <Card className={ cardClass }>
-        <Image src={book.image && book.image.url ? book.image.url: book3} alt='Book one' wrapped className='book-image'/>
+        <Image
+            src={book.image ? book.image: book3}
+            alt={book.name}
+            wrapped
+            className='book-image'
+        />
         <div className='book-content'>
             <h3>{book.name && book.name}</h3>
             <p>{book.author && book.author}</p>

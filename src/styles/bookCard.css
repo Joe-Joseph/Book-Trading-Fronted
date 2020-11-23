@@ -17,9 +17,10 @@
 }
 
 .book-content {
+    font-size: 11px;
     position: absolute;
     width: 100%;
-    top: 4.5rem;
+    top: 5rem;
     text-align: center;
     color: white;
     opacity: 0;
@@ -31,12 +32,17 @@
     font-family: 'EB Garamond', serif;
     margin: 5px;
     font-weight: 600;
+    font-size: 12px;
 }
 
 .book-card:hover .book-content{
     opacity: 1;
-    transform: translate(0%, 35%);
+    transform: translate(0%, 30%);
     cursor: pointer;
+}
+
+.book-card{
+    margin-bottom: 0 !important;
 }
 
 .book-card:hover .book-image{
